@@ -13,15 +13,11 @@ app = FastAPI(
     title=APP_NAME, version=APP_VERSION, description="Student Manager Pro API"
 )
 
-# Allow local development and Vercel frontend
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://127.0.0.1:5500",
         "http://localhost:5500",
-        "http://127.0.0.1:3000",
-        "http://localhost:3000",
-        "https://*.vercel.app",
     ],
     allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
