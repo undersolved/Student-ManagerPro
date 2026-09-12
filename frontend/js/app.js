@@ -1,6 +1,14 @@
 let editingId = null;
 
 document.addEventListener("DOMContentLoaded", () => {
+	const phoneInput = document.getElementById("phone");
+
+	if (phoneInput) {
+		phoneInput.addEventListener("input", () => {
+			phoneInput.value = phoneInput.value.replace(/\D/g, "").slice(0, 10);
+		});
+	}
+
 	if (document.getElementById("studentForm")) {
 		document
 			.getElementById("studentForm")
@@ -26,7 +34,6 @@ function showToast(message, type = "success") {
 	if (!toast) return;
 
 	toast.textContent = message;
-
 	toast.className = `toast ${type} show`;
 
 	setTimeout(() => {
@@ -47,15 +54,17 @@ function resetForm() {
 }
 
 function validateForm(data) {
-	if (!/^\\d{10}$/.test(data.phone)) {
-		showToast("Phone number must contain exactly 10 digits", "error");
+	// Keep only digits before validation
+	data.phone = data.phone.replace(/\D/g, "");
 
+	// Correct regex
+	if (!/^\d{10}$/.test(data.phone)) {
+		showToast("Phone number must contain exactly 10 digits", "error");
 		return false;
 	}
 
 	if (data.attendance < 0 || data.attendance > 100) {
 		showToast("Attendance must be between 0 and 100", "error");
-
 		return false;
 	}
 
@@ -68,7 +77,6 @@ async function saveStudent(e) {
 	const saveButton = document.getElementById("saveButton");
 
 	saveButton.disabled = true;
-
 	saveButton.textContent = editingId ? "Updating..." : "Saving...";
 
 	const data = {
@@ -93,9 +101,7 @@ async function saveStudent(e) {
 
 	if (!validateForm(data)) {
 		saveButton.disabled = false;
-
 		saveButton.textContent = editingId ? "Update Student" : "Save Student";
-
 		return;
 	}
 
@@ -146,7 +152,8 @@ function renderStudents(students) {
 	const table = document.getElementById("studentTable");
 
 	if (students.length === 0) {
-		table.innerHTML = `<tr>
+		table.innerHTML = `
+<tr>
 <td colspan="7" class="empty">No students found.</td>
 </tr>`;
 
