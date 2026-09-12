@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Student Manager Pro</title>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+
+	<body>
+		<header class="navbar">
+			<h1>🎓 Student Manager Pro</h1>
+
+			<nav>
+				<a href="index.html" class="active">Dashboard</a>
+				<a href="students.html">Students</a>
+			</nav>
+		</header>
+
+		<section class="hero">
+			<h2>Student Management System</h2>
+
+			<p>Manage student records quickly and efficiently.</p>
+		</section>
+
+		<section class="stats">
+			<div class="card blue">
+				<h3 id="totalStudents">0</h3>
+				<p>Total Students</p>
+			</div>
+
+			<div class="card green">
+				<h3 id="avgAttendance">0%</h3>
+				<p>Average Attendance</p>
+			</div>
+
+			<div class="card orange">
+				<h3 id="paidStudents">0</h3>
+				<p>Fees Paid</p>
+			</div>
+
+			<div class="card purple">
+				<h3 id="pendingStudents">0</h3>
+				<p>Pending Fees</p>
+			</div>
+		</section>
+
+		<section class="welcome">
+			<h3>Welcome 👋</h3>
+
+			<p id="dashboardMessage">
+				Add your first student to start managing records.
+			</p>
+
+			<a href="students.html" class="button"> Manage Students </a>
+		</section>
+
+		<script src="js/api.js"></script>
+		<script src="js/app.js"></script>
+	</body>
+</html>
