@@ -4,7 +4,7 @@ A modern **Student Management System** built using **FastAPI, SQLite, HTML, CSS,
 
 > **Live Demo**
 >
-> - **Frontend:** _(Add your Vercel URL here)_
+> - **Frontend:** https://student-managerpro.vercel.app/
 > - **Backend API:** https://student-managerpro.onrender.com
 > - **API Documentation:** https://student-managerpro.onrender.com/docs
 
