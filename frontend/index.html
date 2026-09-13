@@ -3,13 +3,15 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 		<title>Student Manager Pro</title>
+
 		<link rel="stylesheet" href="css/style.css" />
 	</head>
 
-	<body>
-		<header class="navbar">
-			<h1>🎓 Student Manager Pro</h1>
+	<body class="green-theme">
+		<header class="navbar glass">
+			<div class="logo">🌿 Student Manager Pro</div>
 
 			<nav>
 				<a href="index.html" class="active">Dashboard</a>
@@ -17,43 +19,91 @@
 			</nav>
 		</header>
 
-		<section class="hero">
-			<h2>Student Management System</h2>
+		<section class="hero glass">
+			<div class="hero-content">
+				<h1>Modern Student Management System</h1>
 
-			<p>Manage student records quickly and efficiently.</p>
+				<p>
+					A clean, responsive and full-stack student management application
+					built with FastAPI, SQLite and Vanilla JavaScript.
+				</p>
+
+				<div class="hero-buttons">
+					<a href="students.html" class="button"> Manage Students </a>
+
+					<a
+						href="https://student-managerpro.onrender.com/docs"
+						class="secondary-button"
+						target="_blank">
+						API Docs
+					</a>
+				</div>
+			</div>
 		</section>
 
 		<section class="stats">
-			<div class="card blue">
+			<div class="card glass green-card">
 				<h3 id="totalStudents">0</h3>
 				<p>Total Students</p>
 			</div>
 
-			<div class="card green">
+			<div class="card glass green-card">
 				<h3 id="avgAttendance">0%</h3>
 				<p>Average Attendance</p>
 			</div>
 
-			<div class="card orange">
+			<div class="card glass green-card">
 				<h3 id="paidStudents">0</h3>
 				<p>Fees Paid</p>
 			</div>
 
-			<div class="card purple">
+			<div class="card glass green-card">
 				<h3 id="pendingStudents">0</h3>
 				<p>Pending Fees</p>
 			</div>
 		</section>
 
-		<section class="welcome">
-			<h3>Welcome 👋</h3>
+		<section class="features">
+			<h2>Why Student Manager Pro?</h2>
+
+			<div class="feature-grid">
+				<div class="feature-card glass">
+					<h3>⚡ Fast CRUD</h3>
+					<p>
+						Create, update and delete students instantly without page refresh.
+					</p>
+				</div>
+
+				<div class="feature-card glass">
+					<h3>📊 Live Dashboard</h3>
+					<p>Automatically updates attendance and fee statistics.</p>
+				</div>
+
+				<div class="feature-card glass">
+					<h3>📱 Responsive</h3>
+					<p>Works beautifully on desktop, tablet and mobile devices.</p>
+				</div>
+
+				<div class="feature-card glass">
+					<h3>🔒 Simple Architecture</h3>
+					<p>Built with FastAPI, SQLAlchemy and SQLite for clean learning.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="welcome glass">
+			<h2>Project Highlights</h2>
 
 			<p id="dashboardMessage">
-				Add your first student to start managing records.
+				Manage student records with a modern interface featuring live updates,
+				real-time statistics, responsive design, and a clean full-stack
+				architecture.
 			</p>
-
-			<a href="students.html" class="button"> Manage Students </a>
 		</section>
+
+		<footer class="footer glass">
+			<p>Built with ❤️ using FastAPI, SQLite & JavaScript</p>
+		</footer>
 
 		<script src="js/api.js"></script>
 		<script src="js/app.js"></script>
