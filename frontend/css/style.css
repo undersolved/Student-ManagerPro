@@ -1,42 +1,58 @@
+:root {
+	--bg1: #052e16;
+	--bg2: #14532d;
+	--bg3: #1f7a4f;
+
+	--glass: rgba(255, 255, 255, 0.08);
+
+	--border: rgba(255, 255, 255, 0.15);
+
+	--text: #ecfdf5;
+
+	--muted: #d1fae5;
+
+	--accent: #4ade80;
+}
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family:
-		-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-body.green-theme {
-	background: linear-gradient(135deg, #0f3d2e, #14532d, #1b4332);
-	color: white;
+body {
+	font-family: "Poppins", sans-serif;
+	background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+	color: var(--text);
 	min-height: 100vh;
 }
 
 .glass {
-	background: rgba(255, 255, 255, 0.08);
-	backdrop-filter: blur(16px);
-	border: 1px solid rgba(255, 255, 255, 0.12);
-	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+	background: var(--glass);
+	backdrop-filter: blur(18px);
+	border: 1px solid var(--border);
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 }
 
 .navbar {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 18px 35px;
+	padding: 18px 40px;
 	position: sticky;
 	top: 0;
 	z-index: 100;
 }
 
 .logo {
-	font-size: 24px;
-	font-weight: 700;
+	font-family: "Manrope", sans-serif;
+	font-size: 26px;
+	font-weight: 800;
 }
 
 .navbar nav {
 	display: flex;
-	gap: 25px;
+	gap: 22px;
 }
 
 .navbar nav a {
@@ -46,32 +62,43 @@ body.green-theme {
 }
 
 .navbar nav a.active {
-	border-bottom: 2px solid #86efac;
+	border-bottom: 2px solid var(--accent);
 }
 
 .hero {
 	max-width: 1200px;
 	margin: 40px auto;
 	padding: 70px;
-	border-radius: 28px;
+	border-radius: 30px;
+}
+
+badge {
+	display: inline-block;
+	padding: 8px 14px;
+	border-radius: 999px;
+	background: rgba(74, 222, 128, 0.15);
+	color: #bbf7d0;
+	margin-bottom: 22px;
 }
 
 .hero h1 {
-	font-size: 52px;
+	font-family: "Manrope", sans-serif;
+	font-size: 58px;
+	line-height: 1.1;
 	margin-bottom: 20px;
 }
 
 .hero p {
-	font-size: 20px;
+	max-width: 720px;
+	font-size: 19px;
+	color: var(--muted);
 	line-height: 1.8;
-	color: #d1fae5;
-	max-width: 750px;
 }
 
 .hero-buttons {
-	margin-top: 35px;
 	display: flex;
-	gap: 15px;
+	gap: 16px;
+	margin-top: 35px;
 	flex-wrap: wrap;
 }
 
@@ -80,30 +107,24 @@ body.green-theme {
 	padding: 14px 28px;
 	border-radius: 12px;
 	font-weight: 600;
-	text-decoration: none;
 	cursor: pointer;
+	text-decoration: none;
 	border: none;
-	transition: 0.3s;
+	transition: 0.25s;
 }
 
 .button {
-	background: #22c55e;
+	background: linear-gradient(135deg, #4ade80, #16a34a);
 	color: white;
 }
 
 .button:hover {
-	background: #16a34a;
 	transform: translateY(-3px);
 }
 
 .secondary-button {
-	background: rgba(255, 255, 255, 0.12);
+	background: rgba(255, 255, 255, 0.1);
 	color: white;
-	border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.secondary-button:hover {
-	background: rgba(255, 255, 255, 0.18);
 }
 
 .stats {
@@ -111,60 +132,62 @@ body.green-theme {
 	margin: auto;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-	gap: 20px;
+	gap: 22px;
 	padding: 20px;
 }
 
-.green-card {
+.card {
 	padding: 30px;
-	border-radius: 20px;
+	border-radius: 22px;
 	text-align: center;
 }
 
-.green-card h3 {
-	font-size: 36px;
-	margin-bottom: 8px;
+.card h3 {
+	font-family: "Manrope";
+	font-size: 38px;
 	color: #86efac;
+	margin-bottom: 8px;
 }
 
 .features {
 	max-width: 1200px;
-	margin: 50px auto;
+	margin: 60px auto;
 	padding: 20px;
 }
 
 .features h2 {
+	font-family: "Manrope";
+	font-size: 40px;
 	text-align: center;
 	margin-bottom: 35px;
-	font-size: 36px;
 }
 
 .feature-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-	gap: 25px;
+	gap: 22px;
 }
 
 .feature-card {
 	padding: 28px;
 	border-radius: 18px;
-	transition: 0.3s;
 }
 
 .feature-card:hover {
 	transform: translateY(-6px);
+	transition: 0.3s;
 }
 
 .welcome {
 	max-width: 1200px;
 	margin: 50px auto;
-	padding: 40px;
+	padding: 35px;
 	border-radius: 20px;
 	text-align: center;
 }
 
 .container {
-	max-width: 1400px;
+	max-width: 1450px;
 	margin: 35px auto;
 	padding: 30px;
 	border-radius: 22px;
@@ -179,41 +202,39 @@ body.green-theme {
 
 .form-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
 	gap: 16px;
 	margin-bottom: 30px;
 }
 
 .form-grid input,
-.form-grid select {
+.form-grid select,
+.search-box input {
 	padding: 14px;
 	border-radius: 10px;
 	border: none;
 	background: rgba(255, 255, 255, 0.1);
 	color: white;
+	font-family: "Poppins";
 }
 
-.form-grid input::placeholder {
+.form-grid input::placeholder,
+.search-box input::placeholder {
 	color: #d1fae5;
 }
 
 .form-grid input:focus,
-.form-grid select:focus {
-	outline: 2px solid #86efac;
+.form-grid select:focus,
+.search-box input:focus {
+	outline: 2px solid var(--accent);
+}
+
+.search-box {
+	margin-bottom: 25px;
 }
 
 .search-box input {
 	width: 100%;
-	padding: 14px;
-	border-radius: 10px;
-	border: none;
-	margin-bottom: 25px;
-	background: rgba(255, 255, 255, 0.1);
-	color: white;
-}
-
-.search-box input::placeholder {
-	color: #d1fae5;
 }
 
 .table-container {
@@ -224,16 +245,17 @@ body.green-theme {
 table {
 	width: 100%;
 	border-collapse: collapse;
-	min-width: 1100px;
+	min-width: 1200px;
 }
 
 th {
-	background: rgba(34, 197, 94, 0.35);
+	background: rgba(74, 222, 128, 0.2);
 	padding: 15px;
+	font-family: "Manrope";
 }
 
 td {
-	padding: 15px;
+	padding: 14px;
 	text-align: center;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -242,16 +264,19 @@ tr:hover {
 	background: rgba(255, 255, 255, 0.05);
 }
 
-.badge-paid {
-	background: #22c55e;
+.badge-paid,
+.badge-pending {
 	padding: 6px 12px;
 	border-radius: 999px;
+	font-size: 14px;
+}
+
+.badge-paid {
+	background: #16a34a;
 }
 
 .badge-pending {
-	background: #f59e0b;
-	padding: 6px 12px;
-	border-radius: 999px;
+	background: #d97706;
 }
 
 .action-btn {
@@ -263,7 +288,7 @@ tr:hover {
 }
 
 .edit {
-	background: #22c55e;
+	background: #16a34a;
 	color: white;
 }
 
@@ -278,7 +303,6 @@ tr:hover {
 	right: 20px;
 	padding: 14px 20px;
 	border-radius: 10px;
-	color: white;
 	font-weight: 600;
 	opacity: 0;
 	transform: translateY(-20px);
@@ -301,18 +325,14 @@ tr:hover {
 	background: #2563eb;
 }
 
-.footer {
-	margin: 40px auto;
-	padding: 25px;
-	max-width: 1200px;
-	border-radius: 18px;
-	text-align: center;
+.empty {
+	padding: 35px;
 }
 
 @media (max-width: 768px) {
 	.navbar {
 		flex-direction: column;
-		gap: 15px;
+		gap: 12px;
 		padding: 20px;
 	}
 
@@ -321,7 +341,7 @@ tr:hover {
 	}
 
 	.hero h1 {
-		font-size: 36px;
+		font-size: 38px;
 	}
 
 	.hero-buttons {
@@ -335,6 +355,6 @@ tr:hover {
 	}
 
 	table {
-		min-width: 900px;
+		min-width: 1000px;
 	}
 }

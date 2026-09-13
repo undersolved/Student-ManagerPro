@@ -3,8 +3,14 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
 		<title>Student Manager Pro</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+		<link
+			href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Poppins:wght@300;400;500;600&display=swap"
+			rel="stylesheet" />
 
 		<link rel="stylesheet" href="css/style.css" />
 	</head>
@@ -21,11 +27,14 @@
 
 		<section class="hero glass">
 			<div class="hero-content">
-				<h1>Modern Student Management System</h1>
+				<badge>Modern Full-Stack Project</badge>
+
+				<h1>Student Management Made Beautiful.</h1>
 
 				<p>
-					A clean, responsive and full-stack student management application
-					built with FastAPI, SQLite and Vanilla JavaScript.
+					A premium student management system built using FastAPI, SQLite and
+					Vanilla JavaScript featuring live dashboard statistics, instant CRUD
+					operations and responsive design.
 				</p>
 
 				<div class="hero-buttons">
@@ -33,60 +42,58 @@
 
 					<a
 						href="https://student-managerpro.onrender.com/docs"
-						class="secondary-button"
-						target="_blank">
-						API Docs
+						target="_blank"
+						class="secondary-button">
+						View API Docs
 					</a>
 				</div>
 			</div>
 		</section>
 
 		<section class="stats">
-			<div class="card glass green-card">
+			<div class="card glass">
 				<h3 id="totalStudents">0</h3>
 				<p>Total Students</p>
 			</div>
 
-			<div class="card glass green-card">
+			<div class="card glass">
 				<h3 id="avgAttendance">0%</h3>
 				<p>Average Attendance</p>
 			</div>
 
-			<div class="card glass green-card">
+			<div class="card glass">
 				<h3 id="paidStudents">0</h3>
 				<p>Fees Paid</p>
 			</div>
 
-			<div class="card glass green-card">
+			<div class="card glass">
 				<h3 id="pendingStudents">0</h3>
 				<p>Pending Fees</p>
 			</div>
 		</section>
 
 		<section class="features">
-			<h2>Why Student Manager Pro?</h2>
+			<h2>Everything You Need</h2>
 
 			<div class="feature-grid">
 				<div class="feature-card glass">
 					<h3>⚡ Fast CRUD</h3>
-					<p>
-						Create, update and delete students instantly without page refresh.
-					</p>
+					<p>Create, update and delete students instantly.</p>
 				</div>
 
 				<div class="feature-card glass">
 					<h3>📊 Live Dashboard</h3>
-					<p>Automatically updates attendance and fee statistics.</p>
+					<p>Statistics update automatically without refreshing.</p>
 				</div>
 
 				<div class="feature-card glass">
-					<h3>📱 Responsive</h3>
-					<p>Works beautifully on desktop, tablet and mobile devices.</p>
+					<h3>🔍 Smart Search</h3>
+					<p>Find students quickly by name or roll number.</p>
 				</div>
 
 				<div class="feature-card glass">
-					<h3>🔒 Simple Architecture</h3>
-					<p>Built with FastAPI, SQLAlchemy and SQLite for clean learning.</p>
+					<h3>📱 Responsive UI</h3>
+					<p>Beautiful experience across desktop, tablet and mobile.</p>
 				</div>
 			</div>
 		</section>
@@ -96,14 +103,10 @@
 
 			<p id="dashboardMessage">
 				Manage student records with a modern interface featuring live updates,
-				real-time statistics, responsive design, and a clean full-stack
+				real-time statistics, responsive design and a clean FastAPI
 				architecture.
 			</p>
 		</section>
-
-		<footer class="footer glass">
-			<p>Built with ❤️ using FastAPI, SQLite & JavaScript</p>
-		</footer>
 
 		<script src="js/api.js"></script>
 		<script src="js/app.js"></script>
