@@ -9,13 +9,15 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	}
 
-	if (document.getElementById("studentForm")) {
-		document
-			.getElementById("studentForm")
-			.addEventListener("submit", saveStudent);
+	const studentForm = document.getElementById("studentForm");
+
+	if (studentForm) {
+		studentForm.addEventListener("submit", saveStudent);
+
 		document
 			.getElementById("searchInput")
 			.addEventListener("input", searchStudents);
+
 		document.getElementById("cancelEdit").addEventListener("click", resetForm);
 
 		document.getElementById("cancelEdit").style.display = "none";
@@ -79,21 +81,13 @@ async function saveStudent(e) {
 
 	const data = {
 		name: document.getElementById("name").value.trim(),
-
 		roll_number: Number(document.getElementById("roll_number").value),
-
 		student_class: document.getElementById("student_class").value.trim(),
-
 		section: document.getElementById("section").value.trim(),
-
 		age: Number(document.getElementById("age").value),
-
 		email: document.getElementById("email").value.trim(),
-
 		phone: document.getElementById("phone").value.trim(),
-
 		attendance: Number(document.getElementById("attendance").value || 0),
-
 		fee_status: document.getElementById("fee_status").value,
 	};
 
@@ -107,7 +101,6 @@ async function saveStudent(e) {
 		if (editingId) {
 			await apiRequest(`/students/${editingId}`, {
 				method: "PUT",
-
 				body: JSON.stringify(data),
 			});
 
@@ -115,7 +108,6 @@ async function saveStudent(e) {
 		} else {
 			await apiRequest("/students/", {
 				method: "POST",
-
 				body: JSON.stringify(data),
 			});
 
@@ -126,14 +118,14 @@ async function saveStudent(e) {
 
 		await loadStudents();
 
+		// Safe: only updates dashboard if those elements exist
 		await loadDashboardStats();
 	} catch (err) {
 		showToast(err.message, "error");
+	} finally {
+		btn.disabled = false;
+		btn.textContent = "Save Student";
 	}
-
-	btn.disabled = false;
-
-	btn.textContent = "Save Student";
 }
 
 async function loadStudents() {
@@ -145,9 +137,13 @@ async function loadStudents() {
 function renderStudents(students) {
 	const table = document.getElementById("studentTable");
 
+	if (!table) return;
+
 	if (students.length === 0) {
-		table.innerHTML =
-			'<tr><td colspan="11" class="empty">No students found.</td></tr>';
+		table.innerHTML = `
+<tr>
+<td colspan="11" class="empty">No students found.</td>
+</tr>`;
 
 		return;
 	}
@@ -209,7 +205,9 @@ async function editStudent(id) {
 	editingId = id;
 
 	document.getElementById("cancelEdit").style.display = "block";
+
 	document.getElementById("formTitle").textContent = "Edit Student";
+
 	document.getElementById("saveButton").textContent = "Update Student";
 
 	document.getElementById("name").value = student.name;
@@ -222,7 +220,10 @@ async function editStudent(id) {
 	document.getElementById("attendance").value = student.attendance;
 	document.getElementById("fee_status").value = student.fee_status;
 
-	window.scrollTo({ top: 0, behavior: "smooth" });
+	window.scrollTo({
+		top: 0,
+		behavior: "smooth",
+	});
 }
 
 async function deleteStudent(id) {
@@ -234,9 +235,9 @@ async function deleteStudent(id) {
 
 	showToast("Student deleted");
 
-	loadStudents();
+	await loadStudents();
 
-	loadDashboardStats();
+	await loadDashboardStats();
 }
 
 async function searchStudents() {
@@ -254,27 +255,45 @@ async function searchStudents() {
 }
 
 async function loadDashboardStats() {
+	// Prevent errors on pages that don't have dashboard cards
+	const totalStudents = document.getElementById("totalStudents");
+
+	if (!totalStudents) return;
+
+	const avgAttendance = document.getElementById("avgAttendance");
+	const paidStudents = document.getElementById("paidStudents");
+	const pendingStudents = document.getElementById("pendingStudents");
+	const message = document.getElementById("dashboardMessage");
+
 	const students = await apiRequest("/students/");
 
-	document.getElementById("totalStudents").textContent = students.length;
+	totalStudents.textContent = students.length;
 
 	if (students.length === 0) {
-		document.getElementById("avgAttendance").textContent = "0%";
-		document.getElementById("paidStudents").textContent = "0";
-		document.getElementById("pendingStudents").textContent = "0";
+		avgAttendance.textContent = "0%";
+		paidStudents.textContent = "0";
+		pendingStudents.textContent = "0";
+
+		if (message) {
+			message.textContent = "Add your first student to start managing records.";
+		}
 
 		return;
 	}
 
 	const avg = students.reduce((a, b) => a + b.attendance, 0) / students.length;
 
-	document.getElementById("avgAttendance").textContent = `${avg.toFixed(1)}%`;
+	avgAttendance.textContent = `${avg.toFixed(1)}%`;
 
-	document.getElementById("paidStudents").textContent = students.filter(
+	paidStudents.textContent = students.filter(
 		(s) => s.fee_status === "Paid",
 	).length;
 
-	document.getElementById("pendingStudents").textContent = students.filter(
+	pendingStudents.textContent = students.filter(
 		(s) => s.fee_status === "Pending",
 	).length;
+
+	if (message) {
+		message.textContent = "Your student records are up to date.";
+	}
 }
